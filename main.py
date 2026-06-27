@@ -1,13 +1,28 @@
 #!/usr/bin/env python3
 """Email Reply Generator - CLI tool to generate email replies."""
 
+import os
 import sys
 from pathlib import Path
 
 import click
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 VALID_TONES = ["formal", "friendly", "short"]
+
+
+def get_api_key() -> str:
+    """Get API key from environment variable."""
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        click.echo("Error: API_KEY environment variable not set.", err=True)
+        click.echo("Create a .env file based on .env.example.", err=True)
+        sys.exit(1)
+    return api_key
 
 
 def load_prompt_template() -> str:
@@ -38,13 +53,26 @@ def get_email_input(email: str, file_path: str) -> str:
         sys.exit(1)
 
 
-def generate_mock_reply(prompt: str) -> str:
-    """Generate a mock reply (placeholder for API integration)."""
-    return (
-        "Thank you for your email. I have received your message and will "
-        "get back to you shortly.\n\n"
-        "Best regards,\n[Your Name]"
-    )
+def generate_reply(prompt: str, api_key: str) -> str:
+    """Generate email reply using OpenAI API."""
+    try:
+        client = OpenAI(api_key=api_key)
+
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful email assistant."},
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.7,
+            max_tokens=500,
+        )
+
+        return response.choices[0].message.content.strip()
+
+    except Exception as e:
+        click.echo(f"Error calling API: {e}", err=True)
+        sys.exit(1)
 
 
 @click.command()
@@ -53,6 +81,7 @@ def generate_mock_reply(prompt: str) -> str:
 @click.option("--tone", "-t", type=click.Choice(VALID_TONES), default="formal", help="Reply tone.")
 def main(email: str, file_path: str, tone: str):
     """Generate professional email replies using AI."""
+    api_key = get_api_key()
     email_content = get_email_input(email, file_path)
 
     if not email_content.strip():
@@ -62,7 +91,7 @@ def main(email: str, file_path: str, tone: str):
     prompt = format_prompt(email_content, tone)
 
     click.echo(f"Generating {tone} reply...\n")
-    reply = generate_mock_reply(prompt)
+    reply = generate_reply(prompt, api_key)
     click.echo(reply)
 
 
