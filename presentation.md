@@ -1,64 +1,60 @@
 ---
 marp: true
-theme: default
-paginate: true
 ---
 
-# Email Reply Generator
+# 📧 Email Reply Generator
 
----
-
-## The Problem
-
-- Writing email replies is time-consuming
-- Repetitive responses drain productivity
-- Maintaining consistent tone is difficult
-- Professionals spend hours on email daily
+### AI-Powered Email Assistant  
+### By Min Hein Zaw
 
 ---
 
-## The Solution
+# ❓ Problem
 
-- AI-powered email reply generator
-- Generates replies in seconds
-- Supports multiple tones
-- Simple CLI interface
-
----
-
-## Demo
-
-```bash
-python main.py --email "Can we meet tomorrow?" --tone friendly
-```
-
-- Input: Email content + tone
-- Output: Professional reply
+- Writing email replies takes time  
+- Hard to maintain tone (formal/friendly)  
+- Repetitive tasks in daily work  
 
 ---
 
-## Tech Used
+# 💡 Solution
 
-- Python 3
-- OpenAI API
-- Click (CLI framework)
-- python-dotenv (config)
-
----
-
-## Features
-
-- Multiple tones: formal, friendly, short
-- Input via CLI, file, or stdin
-- Environment variable support
-- Clean prompt templates
+- Generate replies automatically  
+- Choose reply tone:
+  - Formal
+  - Friendly
+  - Short  
+- Simple CLI tool  
 
 ---
 
-## Conclusion
+# ⚙️ How It Works
 
-- Save time on email replies
-- Consistent, professional output
-- Easy to use and extend
+1. Input email content  
+2. Select tone  
+3. AI generates reply  
+4. Output shown instantly  
 
-**Thank you!**
+---
+
+# 🧰 Tech Used
+
+- Python (CLI application)  
+- Prompt engineering  
+- Environment variables (.env)  
+- Git & GitHub  
+
+---
+
+# 🚀 Features & Benefits
+
+- Saves time  
+- Improves communication quality  
+- Easy to use  
+- Clean and structured responses  
+
+---
+
+# ✅ Conclusion
+
+- Simple but powerful tool  
