@@ -1,25 +1,63 @@
-# Email Reply Generator Skill
+# Email Reply Generation Skill
 
-Generate professional email replies using AI.
+## ✅ Overview
+This skill generates professional email replies based on user-provided email content and selected tone.  
+It helps users quickly respond to emails in a clear, polite, and effective way.
 
-## Inputs
+---
 
-- **email** (required): The email content to reply to
-- **tone** (optional): Reply tone - `formal`, `friendly`, or `short` (default: `formal`)
+## 🎯 Purpose
+The purpose of this skill is to:
+- Save time when replying to emails
+- Improve communication quality
+- Provide well-structured and professional responses
+- Adapt replies based on the desired tone
 
-## Output
+---
 
-A generated email reply that:
-- Addresses the sender's main points
-- Matches the requested tone
-- Is concise and professional
+## 🧩 Inputs
+This skill requires the following inputs:
 
-## Usage
+1. **Email Content**
+   - The original email message that needs a reply
 
-```bash
-python main.py --email "Your email content" --tone friendly
-```
+2. **Tone**
+   - The style of the reply
+   - Supported tones:
+     - Formal
+     - Friendly
+     - Short
 
-## Environment
+---
 
-Requires `API_KEY` in `.env` file. See `.env.example`.
+## 📤 Output
+The skill produces:
+
+- A well-written email reply
+- Content that matches the selected tone
+- A clear and professional response format
+
+---
+
+## ⚙️ Behavior
+- Reads the provided email content carefully
+- Understands the intent of the message
+- Generates a relevant and appropriate reply
+- Adjusts language and structure based on tone
+- Keeps responses concise and easy to understand
+
+---
+
+## 💡 Example Use Case
+User provides:
+- Email asking for a meeting delay
+
+Skill generates:
+- A polite and professional reply acknowledging the request and suggesting a new time
+
+---
+
+## 🚀 Benefits
+- Improves productivity
+- Reduces writing effort
+- Ensures consistent communication quality
