@@ -1,4 +1,4 @@
 {
   "name": "email-reply-generator",
-  "description": "CLI tool to generate professional email replies using AI"
+  "description": "A Python CLI application that generates professional email replies using AI with support for different tones such as formal, friendly, and short."
 }
